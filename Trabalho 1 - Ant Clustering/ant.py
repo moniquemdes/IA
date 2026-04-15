@@ -58,14 +58,3 @@ class Ant:
 
         return corpos_ao_redor / total_celulas_vistas
 
-    def probabilidade_pegar(self, densidade):
-        f = self.calcular_densidade_local(matriz)
-        k = 0.3
-        return (k / (k + f)) ** 2
-    
-    def probabilidade_largar(self, densidade):
-        f = self.calcular_densidade_local(matriz)
-        k = 0.6
-        return (f / (f + k)) ** 2
-
-    
