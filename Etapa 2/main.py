@@ -25,10 +25,10 @@ def carregar_corpos(caminho):
 
 if __name__ == '__main__':
 
-    TAMANHO_MATRIZ = 64
+    TAMANHO_MATRIZ = 50
     # NUM_CORPOS = 300
-    NUM_FORMIGAS = 100
-    ITERACOES = 2000000
+    NUM_FORMIGAS = 150
+    ITERACOES = 700000000
 
     matriz = [[0 for _ in range(TAMANHO_MATRIZ)] for _ in range(TAMANHO_MATRIZ)]
 
@@ -58,6 +58,8 @@ if __name__ == '__main__':
     for linha in matriz:
         print(''.join(f"{x.grupo if x != 0 else ' ':>2}" for x in linha))
     print("-" * 40)
+
+    tempo_inicio = time.time()
 
     for iteracao in range(ITERACOES):
         for formiga in formigas:
@@ -116,10 +118,16 @@ if __name__ == '__main__':
                 else: 
                     formiga.move(direcao, largura_matriz, altura_matriz)
 
+    tempo_fim = time.time()
+    
+    tempo_total = tempo_fim - tempo_inicio
+
     print("\nEstado FINAL da matriz:")
     for linha in matriz:
-        print(''.join(f"{x.grupo if x != 0 else ' ':>2}" for x in linha))
+        print(''.join(f"{'1' if x == 1 else ' ':>2}" for x in linha))
     print("-" * 40)
+    
+    print(f"Tempo total de execução: {tempo_total:.2f} segundos.")
 
     #metrica de distancia vetorial / mediana / manhattan / cosseno / euclidiana 
     #fazer com a vizinhança de cada formiga, calcular a distância média entre os corpos e comparar com a distância média inicial para avaliar a eficácia da organização.
